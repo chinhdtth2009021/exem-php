@@ -2,27 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Apartment;
 use App\Models\Apartments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ApartmentsController extends Controller
 {
-    public function index()
+    public function list(Apartment $request)
     {
-        $list = Apartments::all();
-        return view('/apartment/list', ['list' => $list]);
+        return view('.apartment.list',
+            [
+                'list' => $list
+            ]);
     }
 
 
     public function create()
     {
 
-        return view('/apartment/form');
+        return view('.apartment.form');
+    }
+
+    public function index()
+    {
+        return view('.apartment.list', [
+            'list' => DB::table('apartments')->paginate(6)
+//            $users = DB::table('users')->simplePaginate(15);
+        ]);
     }
 
     public function store(Request $request)
     {
-        $apartment = new Apartments();
+        $apartment = new Apartments;
         $apartment->fill($request->all());
         $apartment->save();
         return redirect('/apartment/list');
@@ -33,7 +45,9 @@ class ApartmentsController extends Controller
     {
         //
     }
-    public function  save( Request $request, $id){
+
+    public function save(Request $request, $id)
+    {
         $save = Apartments::find($id);
         $save->update($request->all());
         $save->save();
@@ -41,16 +55,21 @@ class ApartmentsController extends Controller
     }
 
 
-    public function edit(Apartments $apartments)
+    public function edit(Apartments $apartments, $id)
     {
-        //
+        $edit = Apartments::find($id);
+        return view('.apartment.edit',[
+            'edit' => $edit
+        ]);
     }
 
 
     public function update(Request $request, Apartments $apartments, $id)
     {
         $update = Apartments::find($id);
-        return view('/apartment/edit',['list' => $update]);
+        $update->update($request->all());
+        $update->save();
+        return redirect('/apartment/list');
 
     }
 
@@ -59,9 +78,11 @@ class ApartmentsController extends Controller
     {
         //
     }
-    public function  delete($id){
+
+    public function delete($id)
+    {
         $delete = Apartments::find($id);
-        $delete->datlete();
+        $delete->delete();
         return redirect('/apartment/list');
     }
 }

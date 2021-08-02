@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApartmentsController;
+use App\Http\Requests\Apartment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/apartment',ApartmentsController::class,);
-Route::get('apartment/create',[ApartmentsController::class, 'create']);
-Route::post('apartment/create',[ApartmentsController::class, 'store']);
-Route::get('apartment/list',[ApartmentsController::class, 'index']);
-Route::get('apartment/edit/{id}',[ApartmentsController::class, 'update']);
-Route::post('apartment/edit/{id}',[ApartmentsController::class, 'save']);
-Route::delete('apartment/delete/{id}',[ApartmentsController::class, 'delete']);
+Route::get('/apartment/create',[ApartmentsController::class, 'create']);
+Route::post('/apartment/create',[ApartmentsController::class, 'store']);
+Route::get('/apartment/list',[ApartmentsController::class, 'list']);
+Route::get('/apartment/list',[ApartmentsController::class, 'index']);
+Route::get('/apartment/edit/{id}',[ApartmentsController::class, 'edit']);
+Route::post('/apartment/edit/{id}',[ApartmentsController::class, 'update']);
+Route::get('/apartment/delete/{id}',[ApartmentsController::class, 'delete']);
+//Route::get('/apartment/create',[Apartment::class, 'rules']);

@@ -13,43 +13,47 @@
     <title>Document</title>
 </head>
 <body>
-<h1>List Apartment</h1>
-<table class="table table-dark table-hover">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Address</th>
-        <th>Price</th>
-        <th>General</th>
-        <th>Description</th>
-        <th>Thumbnail</th>
-        <th>Status</th>
-        <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach($list as $apartment)
+<div class="container">
+    <h1 style="text-align: center">List Apartment</h1>
+    <table class="table table-dark table-hover">Product
+        <thead>
         <tr>
-            <td>{{$apartment->id}}</td>
-            <td>{{$apartment->name}}</td>
-            <td>{{$apartment->address}}</td>
-            <td>{{$apartment->price}}</td>
-            <td>{{$apartment->general}}</td>
-            <td>{{$apartment->description}}</td>
-            <td>{{$apartment->thumbnail}}$</td>
-            <td>{{$apartment->status}}$</td>
-            <td>
-                <a href="/apartment/edit/{{$apartment->id}}">
-                    <button class="btn btn-primary">Edit</button>
-                </a>
-                <a href="/apartment/delete/{{$apartment->id}}" onclick="return confirm('bạn chắc chắn muốn xóa chứ?')">
-                    <button class="btn btn-danger">Delete</button>
-                </a>
-            </td>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Price</th>
+            <th>General</th>
+            <th>Description</th>
+            <th>Thumbnail</th>
+            <th>Status</th>
+            <th>Action</th>
         </tr>
-    @endforeach
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        @foreach($list as $apartment)
+            <tr>
+                <td>{{$apartment->id}}</td>
+                <td>{{$apartment->name}}</td>
+                <td>{{$apartment->address}}</td>
+                <td>{{$apartment->price}}$</td>
+                <td>{{$apartment->general}}</td>
+                <td>{{$apartment->description}}</td>
+                <td><img src="{{$apartment->thumbnail}}" alt="" width="50px"></td>
+                <td>{{$apartment->status}}</td>
+                <td>
+                    <a href="/apartment/edit/{{$apartment->id}}">
+                        <button class="btn btn-primary">Edit</button>
+                    </a>
+                    <a href="/apartment/delete/{{$apartment->id}}"
+                       onclick="return confirm('bạn chắc chắn muốn xóa chứ?')">
+                        <button class="btn btn-danger">Delete</button>
+                    </a>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+    </div>
+</div>
 </body>
 </html>
