@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApartmentsController;
+use App\Http\Controllers\LibraryController;
 use App\Http\Requests\Apartment;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,6 @@ Route::get('/apartment/edit/{id}',[ApartmentsController::class, 'edit']);
 Route::post('/apartment/edit/{id}',[ApartmentsController::class, 'update']);
 Route::get('/apartment/delete/{id}',[ApartmentsController::class, 'delete']);
 //Route::get('/apartment/create',[Apartment::class, 'rules']);
+
+
+Route::get('/library/list',[LibraryController::class, 'index']);

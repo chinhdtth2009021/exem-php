@@ -16,14 +16,10 @@ class CreateLibrariesTable extends Migration
             $table->increments('bookId');
             $table->integer('authorId')->default(0);
             $table->string('title', 55);
-            $table->string('ISBN');
-            $table->string('attributes');
-            $table->id('default');
-            $table->id('comment');
-            $table->id('extra');
-            $table->id('status');
+            $table->string('ISBN', 25);
+            $table->smallInteger('pub_year')->default(0);
+            $table->tinyInteger('available');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
