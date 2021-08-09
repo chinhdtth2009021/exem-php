@@ -14,14 +14,4 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function search(Request $request){
-        $name =  $request->get('search');
-        $admin = new Library();
-        $admin = DB::table('libraries')->where('name', $name)->first();
-//        return $admin;
-        return view('/library/list',[
-            'admins' =>$admin
-        ]);
-    }
-
 }

@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="container">
-    <h1 style="text-align: center">List Apartment</h1>
+    <h1 style="text-align: center">List Library</h1>
     <table class="table table-dark table-hover">
         <thead>
         <form id="form-filter">
